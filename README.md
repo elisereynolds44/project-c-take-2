@@ -1,8 +1,6 @@
 ## Dallas Cost of Living Dashboard 
 Elise Reynolds - CS 150 Community Action Computing 
 
-## At least three (3) example scenarios or stories that could be derived by exploring the data with your dashboard
-
 ## Why Dallas? 
 
 Dallas is not only my hometown, but also a city that has seen rapid economic growth and change over time. By analyzing this region, I hoped to gain insight into how affordability has shifted, and how wage growth compares to increasing costs of essentials. I also wanted to share this with classmates who may be unfamiliar with the area but interested in the realities of life in a major US city as COOL as Dallas Texas. 
