@@ -152,8 +152,15 @@ def register_survival_callbacks(app):
         else:
             housing_total = 0
 
+        # ----- Utilties -------
+        basic = 166.81 # Basic (Electricity, Heating, Cooling, Water, Garbage) for 85m2 Apartment (USD)
+        internet = 69.30 # Internet (60 Mbps or More, Unlimited Data, Cable, ADSL) (USD)
+        mobile = 0.18 * 400# 1 Minute of Pre paid Mobile Tariff Local (No Discounts of Plans) (USD) multiplied by the avg monthly amount of minutes of US users
+        total_utilties = basic + internet + mobile
+
+
         # total and result
-        total_expenses = groceries_total + dining_total + transport_total + childcare_total + housing_total
+        total_expenses = groceries_total + dining_total + transport_total + childcare_total + housing_total + total_utilties
         remaining = latest_income - total_expenses
 
         if remaining < 0:
@@ -171,6 +178,7 @@ def register_survival_callbacks(app):
         - Transport: ${transport_total:,.2f}
         - Childcare: ${childcare_total:,.2f}
         - Housing: ${housing_total:,.2f}
+        - Utilities: ${total_utilties:,.2f}
         
         **Total expenses**: ${total_expenses:,.2f}
         **{msg}**
