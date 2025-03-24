@@ -47,7 +47,7 @@ def register_survival_callbacks(app):
 
         triggered_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
-        if triggered_id == "reset-button":
+        if triggered_id == "reset-again":
             return "basic", "cheap", "transit", "none", "shared", ""
 
 
