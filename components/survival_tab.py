@@ -32,9 +32,9 @@ def build_survival_tab():
         dcc.Dropdown(
             id="dining-choice",
             options=[
-                {"label": "Cheap - 1 McMeal from McDonald's", "value": "cheap"},
-                {"label": "Moderate - 2 McMeals, 4 Coffees, 1 Beer", "value": "moderate"},
-                {"label": "Expensive - Fancy dinner, 4 coffees, 2 beers", "value": "expensive"},
+                {"label": "Cheap - 4 McMeals from McDonald's", "value": "cheap"},
+                {"label": "Moderate - 6 McMeals, 7 Coffees, 4 Beer", "value": "moderate"},
+                {"label": "Expensive - 4 Fancy dinner's, 14 coffees, 10 beers", "value": "expensive"},
             ],
             value="cheap",
         ),
@@ -71,6 +71,8 @@ def build_survival_tab():
                 {"label": "1BR Outside Center", "value": "outside"},
                 {"label": "1BR In City Center", "value": "center"},
                 {"label": "Shared Roomate Situation", "value": "shared"},
+                {"label": "3BR Outside City Center (Family Option)", "value": "3br_outside"},
+                {"label": "3BR In City Center (Family Option)", "value": "3br_center"},
             ],
             value="shared",
         ),

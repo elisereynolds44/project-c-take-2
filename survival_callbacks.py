@@ -65,52 +65,52 @@ def register_survival_callbacks(app):
         groceries_map = {
 
             "basic": [
-                "Milk (regular), (1 liter) (USD)",
-                "Eggs (regular) (12) (USD)",
-                "Loaf of Fresh White Bread (500g) (USD)",
-                "Rice (white), (1kg) (USD)"
+                ("Milk (regular), (1 liter) (USD)", 12), # 1L/person/week
+                ("Eggs (regular) (12) (USD)", 5), # 1.5 dozen/person/week
+                ("Loaf of Fresh White Bread (500g) (USD)", 6),
+                ("Rice (white), (1kg) (USD)", 3),
             ],
 
             "protein": [
-                "Chicken Fillets (1kg) (USD)",
-                "Local Cheese (1kg) (USD)",
-                "Beef Round (1kg) (or Equivalent Back Leg Red Meat) (USD)"
+                ("Chicken Fillets (1kg) (USD)", 6), # 1kg/week
+                ("Local Cheese (1kg) (USD)", 3), # 2kg/month
+                ("Beef Round (1kg) (or Equivalent Back Leg Red Meat) (USD)", 3),
             ],
 
             "full": [
-                "Milk (regular), (1 liter) (USD)",
-                "Eggs (regular) (12) (USD)",
-                "Loaf of Fresh White Bread (500g) (USD)",
-                "Rice (white), (1kg) (USD)",
-                "Chicken Fillets (1kg) (USD)",
-                "Local Cheese (1kg) (USD)",
-                "Beef Round (1kg) (or Equivalent Back Leg Red Meat) (USD)",
-                "Apples (1kg) (USD)",
-                "Banana (1kg) (USD)",
-                "Oranges (1kg) (USD)",
-                "Tomato (1kg) (USD)",
-                "Potato (1kg) (USD)",
-                "Onion (1kg) (USD)",
-                "Lettuce (1 head) (USD)"
+                ("Milk (regular), (1 liter) (USD)", 12),
+                ("Eggs (regular) (12) (USD)", 6),
+                ("Loaf of Fresh White Bread (500g) (USD)", 6),
+                ("Rice (white), (1kg) (USD)", 3),
+                ("Chicken Fillets (1kg) (USD)", 6),
+                ("Local Cheese (1kg) (USD)", 3),
+                ("Beef Round (1kg) (or Equivalent Back Leg Red Meat) (USD)", 3),
+                ("Apples (1kg) (USD)", 6),
+                ("Banana (1kg) (USD)", 6),
+                ("Oranges (1kg) (USD)", 3),
+                ("Tomato (1kg) (USD)", 3),
+                ("Potato (1kg) (USD)", 3),
+                ("Onion (1kg) (USD)", 3),
+                ("Lettuce (1 head) (USD)", 3),
             ]
         }
 
-        groceries_total = sum(cost_row[col] for col in groceries_map[groceries])
+        groceries_total = sum(cost_row[item] * qty for item, qty in groceries_map[groceries])
 
         # ----- Dining -------
         dining_map = {
             "cheap": [
-                ("McMeal at McDonalds (or Equivalent Combo Meal) (USD)", 1)
+                ("McMeal at McDonalds (or Equivalent Combo Meal) (USD)", 4)
             ],
             "moderate": [
-                ("McMeal at McDonalds (or Equivalent Combo Meal) (USD)", 2),
-                ("Cappuccino (regular, in restaurants) (USD)", 4),
-                ("Domestic Beer (0.5 liter draught, in restaurants) (USD)", 1)
+                ("McMeal at McDonalds (or Equivalent Combo Meal) (USD)", 6),
+                ("Cappuccino (regular, in restaurants) (USD)", 7),
+                ("Domestic Beer (0.5 liter draught, in restaurants) (USD)", 4)
             ],
             "expensive": [
-                ("Meal for 2 People, Mid-range Restaurant, Three-course (USD)", 1),
-                ("Cappuccino (regular, in restaurants) (USD)", 4),
-                ("Imported Beer (0.33 liter bottle, in restaurants) (USD)", 2)
+                ("Meal for 2 People, Mid-range Restaurant, Three-course (USD)", 4),
+                ("Cappuccino (regular, in restaurants) (USD)", 14),
+                ("Imported Beer (0.33 liter bottle, in restaurants) (USD)", 10)
             ]
         }
 
@@ -149,6 +149,10 @@ def register_survival_callbacks(app):
             housing_total = cost_row["Apartment (1 bedroom) Outside of Centre (USD)"]
         elif housing == "center":
             housing_total = cost_row["Apartment (1 bedroom) in City Centre (USD)"]
+        elif housing == "3br_outside":
+            housing_total = cost_row["Apartment (3 bedrooms) Outside of Centre (USD)"]
+        elif housing == "3br_center":
+            housing_total = cost_row["Apartment (3 bedrooms) in City Centre (USD)"]
         else:
             housing_total = 0
 
@@ -165,7 +169,7 @@ def register_survival_callbacks(app):
 
         if remaining < 0:
             msg = f"You're short by ${abs(remaining):,.2f} - you may need to rethink your budget! 💸"
-        elif remaining < 300:
+        elif remaining < 600:
             msg = f"You barely make it with only ${remaining:,.2f} left over. 🫣"
         else:
             msg= f"Nice! You have ${remaining:,.2f} left after expenses. 💪"
