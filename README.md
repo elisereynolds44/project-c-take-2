@@ -95,6 +95,17 @@ And honestly? I think that’s the whole point.
 
 Also, if you are curious I have included some photos of my nephew in my project! His name is Theodore!!!!!
 
+## Feedback Exchange 
 
+To make the budget simulation more realistic for different household types, I expanded the housing options in the "Would You Survive" game tab:
+- Added 2 new housing choices for families: 
+  - 3 BR Outside City Center (Family Option)
+  - 3 BR In City Center (Family Option)
+- Updated the logic to properly handle these new dropdown values and get the corresponding price data
+    
+Also, to better reflect the cost of groceries for a typical 3-person household, I revised the logic i the "Would You Survive" tab: 
+- Added quantity multipliers to each grocery item in the budget simulation to more accurately simulate what a 3-person family might consume in a month. 
+- updated all grocery option mappings (basic, protein, full) to include both the item name and an estimated monthly quantity.
+- Adjusted the calculation logic from a simple sum() to a weighted total using item quantity x unit price
 
 
